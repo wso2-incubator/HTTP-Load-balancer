@@ -1,0 +1,24 @@
+@startuml
+
+participant StocksInbound : InboundEndpoint(protocol("http"),port("8290"),context("/stocks"))
+
+participant StocksPipeline : Pipeline("Stocks_Flow")
+
+participant Endpoint1 : OutboundEndpoint(protocol("http"),host("http://localhost:8080/"))
+
+participant Endpoint2 : OutboundEndpoint(protocol("http"),host("http://localhost:8082/"))
+
+participant Endpoint3 : OutboundEndpoint(protocol("http"),host("http://localhost:8084/"))
+
+participant Endpoint4 : OutboundEndpoint(protocol("http"),host("http://localhost:8086/"))
+
+participant Endpoint5 : OutboundEndpoint(protocol("http"),host("http://localhost:8088/"))
+
+StocksInbound -> StocksPipeline : "client request"
+
+LoadBalancer(algorithm(name(ROUND_ROBIN)),persistence(type(NO_PERSISTENCE)),healthCheck(type(PASSIVE),requestTimeout(30s),unHealthyRetries(9times),healthyRetries(2times),healthyCheckInterval(1m)))
+
+StocksPipeline -> StocksInbound : "Final Response"
+
+@enduml
+
