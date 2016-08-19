@@ -14,7 +14,7 @@ These are the configurations used during bench-marking.
 
 - `Host OS     :` OS X EI Captain Version 10.11.5 (15F34) MacBook Pro (Mid 2015)
 - `Hypervisor  :` VMware Fusion Professional Version 8.1.1 (3771013)
-- `Processor   :` 2.5 GHz Core i7
+- `Processor   :` 2.5 GHz Intel Core i7
 - `Memory      :` 16 GB 1600 MHz DDR3
 
 ## Configuration Changes in Ubuntu
